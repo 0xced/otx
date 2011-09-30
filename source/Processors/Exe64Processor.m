@@ -1677,6 +1677,18 @@
                 *outType = TextConstType;
         }
     }
+    else    // (__TEXT,__objc_methname) (char*)
+    if (inAddr >= iObjcMethnameSect.s.addr &&
+        inAddr < iObjcMethnameSect.s.addr + iObjcMethnameSect.size)
+    {
+        thePtr  = (iObjcMethnameSect.contents + (inAddr - iObjcMethnameSect.s.addr));
+    }
+    else    // (__TEXT,__objc_classname) (char*)
+    if (inAddr >= iObjcClassnameSect.s.addr &&
+        inAddr < iObjcClassnameSect.s.addr + iObjcClassnameSect.size)
+    {
+        thePtr  = (iObjcClassnameSect.contents + (inAddr - iObjcClassnameSect.s.addr));
+    }
     else    // (__TEXT,__literal4) (float)
     if (inAddr >= iLit4Sect.s.addr &&
         inAddr < iLit4Sect.s.addr + iLit4Sect.size)
