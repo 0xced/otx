@@ -650,7 +650,7 @@
 
                 if (demangledStringLength < demangledDataLength)
                     NSLog(@"otx: demangled C++ name is too large. Increase MAX_LINE_LENGTH to %lu.\n"
-                           "Name demangling will now go off the rails.", demangledDataLength);
+                           "Name demangling will now go off the rails.", (unsigned long)demangledDataLength);
 
                 // Get the string and terminate it.
                 [readData getBytes: demangledName
@@ -1078,7 +1078,7 @@
 
                 if (demangledStringLength < demangledDataLength)
                     NSLog(@"otx: demangled C++ name is too large. Increase MAX_OPERANDS_LENGTH to %lu.\n"
-                           "Name demangling will now go off the rails.", demangledDataLength);
+                           "Name demangling will now go off the rails.", (unsigned long)demangledDataLength);
 
                 [readData getBytes: demangledName
                             length: demangledStringLength];
@@ -1133,7 +1133,7 @@
 
                 if (demangledStringLength < demangledDataLength)
                     NSLog(@"otx: demangled C++ name is too large. Increase MAX_COMMENT_LENGTH to %lu.\n"
-                           "Name demangling will now go off the rails.", demangledDataLength);
+                           "Name demangling will now go off the rails.", (unsigned long)demangledDataLength);
 
                 [readData getBytes: demangledName
                             length: demangledStringLength];
