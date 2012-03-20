@@ -531,7 +531,7 @@
 
             case 0x8d:  // leal
             {
-                uint32_t offset = *(uint32_t*)&inLine->info.code[opcodeIndex + 2];
+                int32_t offset = *(uint32_t*)&inLine->info.code[opcodeIndex + 2];
 
                 modRM = inLine->info.code[opcodeIndex + 1];
                 offset = OSSwapLittleToHostInt32(offset);
