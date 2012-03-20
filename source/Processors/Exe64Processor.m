@@ -960,6 +960,7 @@
         [self commentForLine:*ioLine];
 
         size_t origCommentLength = strlen(iLineCommentCString);
+        // BEWARE IF origCommentLength > MAX_COMMENT_LENGTH !!!
 
         if (origCommentLength)
         {
