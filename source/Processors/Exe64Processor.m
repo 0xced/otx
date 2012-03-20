@@ -820,8 +820,8 @@
 
             if (methodInfo.oc_class.data)
             {
-                objc2_64_class_ro_t* roData = (objc2_64_class_ro_t*)(iDataSect.contents +
-                    (uintptr_t)(methodInfo.oc_class.data - iDataSect.s.addr));
+                objc2_64_class_ro_t* roData = (objc2_64_class_ro_t*)(iObjcClassListSect.contents +
+                    (uintptr_t)(methodInfo.oc_class.data - iObjcClassListSect.s.addr));
 
                 UInt64 name = roData->name;
 

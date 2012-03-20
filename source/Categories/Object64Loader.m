@@ -160,8 +160,8 @@
 
         // Save methods, ivars, and protocols
         // Don't call getPointer here, its __DATA logic doesn't fit
-        objc2_64_class_t workingClass = *(objc2_64_class_t*)(iDataSect.contents +
-            (fileClassPtr - iDataSect.s.addr));
+        objc2_64_class_t workingClass = *(objc2_64_class_t*)(iObjcClassListSect.contents +
+            (fileClassPtr - iObjcClassListSect.s.addr));
 
         if (iSwapped)
             swap_objc2_64_class(&workingClass);
@@ -175,8 +175,8 @@
             uint32_t count;
             uint32_t i;
 
-            roData = (objc2_64_class_ro_t*)(iDataSect.contents +
-                (uintptr_t)(workingClass.data - iDataSect.s.addr));
+            roData = (objc2_64_class_ro_t*)(iObjcClassListSect.contents +
+                (uintptr_t)(workingClass.data - iObjcClassListSect.s.addr));
             methodBase = roData->baseMethods;
             ivarBase = roData->ivars;
 
@@ -188,8 +188,8 @@
 
             if (methodBase != 0)
             {
-                objc2_64_method_list_t* methods = (objc2_64_method_list_t*)(iDataSect.contents +
-                    (uintptr_t)(methodBase - iDataSect.s.addr));
+                objc2_64_method_list_t* methods = (objc2_64_method_list_t*)(iObjcClassListSect.contents +
+                    (uintptr_t)(methodBase - iObjcClassListSect.s.addr));
                 objc2_64_method_t* methodArray = &methods->first;
                 count = methods->count;
 
@@ -214,8 +214,8 @@
 
             if (ivarBase != 0)
             {
-                objc2_64_ivar_list_t* ivars = (objc2_64_ivar_list_t*)(iDataSect.contents +
-                    (uintptr_t)(ivarBase - iDataSect.s.addr));
+                objc2_64_ivar_list_t* ivars = (objc2_64_ivar_list_t*)(iObjcClassListSect.contents +
+                    (uintptr_t)(ivarBase - iObjcClassListSect.s.addr));
                 objc2_64_ivar_t* ivarArray = &ivars->first;
                 count = ivars->count;
 
@@ -240,16 +240,16 @@
         // Get metaclass methods
         if (workingClass.isa != 0)
         {
-            workingClass = *(objc2_64_class_t*)(iDataSect.contents +
-                (workingClass.isa - iDataSect.s.addr));
+            workingClass = *(objc2_64_class_t*)(iObjcClassListSect.contents +
+                (workingClass.isa - iObjcClassListSect.s.addr));
 
             if (iSwapped)
                 swap_objc2_64_class(&workingClass);
 
             if (workingClass.data != 0)
             {
-                roData = (objc2_64_class_ro_t*)(iDataSect.contents +
-                    (uintptr_t)(workingClass.data - iDataSect.s.addr));
+                roData = (objc2_64_class_ro_t*)(iObjcClassListSect.contents +
+                    (uintptr_t)(workingClass.data - iObjcClassListSect.s.addr));
                 methodBase = roData->baseMethods;
 
                 if (iSwapped)
@@ -257,8 +257,8 @@
 
                 if (methodBase != 0)
                 {
-                    objc2_64_method_list_t* methods = (objc2_64_method_list_t*)(iDataSect.contents +
-                        (uintptr_t)(methodBase - iDataSect.s.addr));
+                    objc2_64_method_list_t* methods = (objc2_64_method_list_t*)(iObjcClassListSect.contents +
+                        (uintptr_t)(methodBase - iObjcClassListSect.s.addr));
                     objc2_64_method_t* methodArray = &methods->first;
                     uint32_t count = methods->count;
                     uint32_t i;
