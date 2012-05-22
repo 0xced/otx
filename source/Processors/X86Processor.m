@@ -1063,7 +1063,7 @@
 
                     if (!theDummyPtr)
                     {
-                        theSymPtr   = NULL;
+                        theSymPtr = [self findSymbolByAddress:theValue];
                         break;
                     }
 
