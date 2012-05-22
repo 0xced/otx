@@ -44,7 +44,7 @@
         iFieldWidths.offset         = 8;
         iFieldWidths.address        = 10;
         iFieldWidths.instruction    = 24;   // 15 bytes is the real max, but this works
-        iFieldWidths.mnemonic       = 12;   // repnz/scasb
+        iFieldWidths.mnemonic       = 14;   // lock/cmpxchgq
         iFieldWidths.operands       = 30;   // 0x00000000(%eax,%eax,4),%xmm0
     }
 
