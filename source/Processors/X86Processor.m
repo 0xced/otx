@@ -302,6 +302,16 @@
                     break;
                 }
             }
+            else if ((inLine->info.code[1] & 0x90) == 0x90) // SETcc + MOVSX + MOVZX + ... ?
+            {
+                modRM = inLine->info.code[2];
+                if (MOD(modRM) == MOD32 && iRegInfos[REG2(modRM)].isValid)
+                {
+                    uint32_t imm = *(uint32_t*)&inLine->info.code[3];
+                    imm = OSSwapLittleToHostInt32(imm);
+                    localAddy = iRegInfos[REG2(modRM)].value + imm;
+                }
+            }
 
             break;
         }
