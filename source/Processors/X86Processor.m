@@ -432,8 +432,10 @@
         case 0x81:  // immediate group 1 - imm32,r32
         case 0x88:  // movb r8,r/m8
         case 0x89:  // movl r32,r/m32
+        case 0x8a:  // movb r/m8,r8
         case 0x8b:  // movl r/m32,r32
         case 0xc6:  // movb imm8,r/m32
+        case 0xf6:  // testb imm8,r/m8
             modRM = inLine->info.code[1];
 
             // In immediate group 1 we only want cmpl
